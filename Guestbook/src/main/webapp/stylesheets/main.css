@@ -1,0 +1,54 @@
+
+body {
+   font-family: Verdana, Helvetica, sans-serif;
+   background-color: #EAB5A3;
+}
+
+h1 {
+	text-align: center;
+}
+
+.header-image {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.header-image img {
+	width: 100%;
+}
+.post {
+	background-color: #ffffff;
+	padding: 10px;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.post-header {
+	background-color: #ffffff;
+	padding: 10px;
+	text-align: center;
+	width: 80%;
+	margin: 10px auto;
+}
+
+nav {
+	text-align: center;
+	width: 80%;
+	margin: 10px auto;
+}
+nav ul {
+	padding: 0;
+	
+}
+nav li {
+	display: inline-block;
+	list-type: none;
+	text-align: center;
+	background-color: #ffffff;
+	padding: 5px 10px;
+	border: 1px solid black;
+}
+
+footer {
+	text-align: center;
+}
