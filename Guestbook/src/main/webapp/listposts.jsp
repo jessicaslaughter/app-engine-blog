@@ -18,16 +18,13 @@
 	</head>
 
 	<body>
-		<form action="/guestbook.jsp" method="post">
-    		<div><button type="submit"><h4>Back to home</h4></button></div>
-    		<input type="hidden" value="${fn:escapeXml(guestbookName)}"/>
-   		</form>
-    
-    	<form action="/post.jsp" method="post">
-    		<div><button type="submit"><h4>Make a post</h4></button></div>
-      		<input type="hidden" value="${fn:escapeXml(guestbookName)}"/>
-  		</form>
-    
+	<h1>archive</h1>
+	<nav>
+	<ul>
+	<li><a href="/">back to home</a></li>
+	<li><a href="/post.jsp">write a post</a></li>
+	</ul>
+	</nav>
 		<%
    		 String guestbookName = request.getParameter("guestbookName");
     		if (guestbookName == null) {
@@ -49,13 +46,13 @@
 	 	Collections.sort(greetings);
     	if(greetings.isEmpty()){
     	%>
-    		<div><h2>There are no posts on the blog</h2></div>
+    		<p>there are no posts yet</p>
     	<%
     	}else{
     	%>
-    		<div><h2>Listing of all posts</h2></div>
     	<%
-    		for (Greeting greeting : greetings) {
+    		for (int i=0; i < greetings.size(); i++) {
+    			Greeting greeting = greetings.get(greetings.size() - 1 - i);
     			pageContext.setAttribute("greeting_content", greeting.getContent());
 	            pageContext.setAttribute("greeting_date", greeting.getDate());
 	            pageContext.setAttribute("greeting_title", greeting.getTitle());
@@ -68,11 +65,10 @@
                     pageContext.setAttribute("greeting_user",
                                              greeting.getUser());
                     %>
-                    <p>${fn:escapeXml(greeting_user.nickname)} wrote on ${fn:escapeXml(greeting_date)}:</p>
-                    
-                    <h3><b> ${fn:escapeXml(greeting_title)}</b></h3>
-           			<blockquote> ${fn:escapeXml(greeting_content)}</blockquote>
-            		<hr>
+                    <div class="archive-post">
+                    <p class="archive-meta"><b>${fn:escapeXml(greeting_title)}</b> by ${fn:escapeXml(greeting_user.nickname)} on ${fn:escapeXml(greeting_date)}:</p>
+           			<p>${fn:escapeXml(greeting_content)}</p>
+           			</div>
                     <%
                 }
         		
@@ -80,6 +76,9 @@
     		}
     	}
     	%>
+    	<footer>
+			<p>by leo xia and jessica slaughter</p>
+		</footer>
 
 	</body>
 

@@ -95,6 +95,7 @@
 	            pageContext.setAttribute("greeting_content", greeting.getContent());
 	            pageContext.setAttribute("greeting_date", greeting.getDate());
 	            pageContext.setAttribute("greeting_title", greeting.getTitle());
+	            pageContext.setAttribute("greeting_user", greeting.getUser());
 	            
 	
 	            if (greeting.getUser() == null) {
@@ -102,7 +103,7 @@
 	                %>
 					<div class="post-header">
 					<h2>${fn:escapeXml(greeting_title)}</h2>
-	                <p class="meta"><span>Anonymous Author | </span><span>Date: ${fn:escapeXml(greeting_date)}</span></p>
+	                <p class="meta"><span>anonymous author | </span><span>date: ${fn:escapeXml(greeting_date)}</span></p>
 					</div>
 	                <%
 	
@@ -111,11 +112,12 @@
 	            	pageContext.setAttribute("greeting_content", greeting.getContent());
 		            pageContext.setAttribute("greeting_date", greeting.getDate());
 		            pageContext.setAttribute("greeting_title", greeting.getTitle());
+		            pageContext.setAttribute("greeting_user", greeting.getUser());
 	
 	                %>
 					<div class="post-header">
 					<h2>${fn:escapeXml(greeting_title)}</h2>
-	                <p class="meta"><span class="post">Author: ${fn:escapeXml(greeting_user.nickname)} | </span><span>Date: ${fn:escapeXml(greeting_date)}</span></p>
+	                <p class="meta"><span class="post">author: ${fn:escapeXml(greeting_user.nickname)} | </span><span>date: ${fn:escapeXml(greeting_date)}</span></p>
 					</div>
 	                <%
 	
@@ -123,7 +125,7 @@
 	
 	            %>
 	
-	            <div class="post"><blockquote>${fn:escapeXml(greeting_content)}</blockquote></div>
+	            <div class="post"><p>${fn:escapeXml(greeting_content)}</p></div>
 	
 	            <%
 	
@@ -137,13 +139,14 @@
 				pageContext.setAttribute("greeting_content", greeting.getContent());
 	            pageContext.setAttribute("greeting_date", greeting.getDate());
 	            pageContext.setAttribute("greeting_title", greeting.getTitle());
+	            pageContext.setAttribute("greeting_user", greeting.getUser());
 	
 	            if (greeting.getUser() == null) {
 	
 	                %>
 					<div class="post-header">
 					<h2>${fn:escapeXml(greeting_title)}</h2>
-	                <p class="meta"><span>Anonymous Author | </span><span>Date: ${fn:escapeXml(greeting_date)}</span></p>
+	                <p class="meta"><span>anonymous author | </span><span>date: ${fn:escapeXml(greeting_date)}</span></p>
 					</div>
 	                <%
 	
@@ -152,11 +155,12 @@
 	            	pageContext.setAttribute("greeting_content", greeting.getContent());
 		            pageContext.setAttribute("greeting_date", greeting.getDate());
 		            pageContext.setAttribute("greeting_title", greeting.getTitle());
+		            pageContext.setAttribute("greeting_user", greeting.getUser());
 	
 	                %>
 					<div class="post-header">
 					<h2>${fn:escapeXml(greeting_title)}</h2>
-	                <p class="meta"><span>Author: ${fn:escapeXml(greeting_user.nickname)} | </span><span>Date: ${fn:escapeXml(greeting_date)}</span></p>
+	                <p class="meta"><span>author: ${fn:escapeXml(greeting_user.nickname)} | </span><span>date: ${fn:escapeXml(greeting_date)}</span></p>
 					</div>
 	                <%
 	
@@ -164,7 +168,7 @@
 	
 	            %>
 	
-	            <div class="post"><blockquote>${fn:escapeXml(greeting_content)}</blockquote></div>
+	            <div class="post"><p>${fn:escapeXml(greeting_content)}</p></div>
 	
 	            <%
 	
@@ -174,8 +178,8 @@
     }
 
 %>
-<footer>
-
+	<footer>
+		<p>by leo xia and jessica slaughter</p>
 	</footer>
   </body>
 
