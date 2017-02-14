@@ -7,6 +7,10 @@ body {
    margin: 20px auto;
 }
 
+h1, h2 {
+	font-family: 'Oswald', sans-serif;
+}
+
 .header-image {
 	width: 100%;
 	margin: 0 auto;
@@ -38,6 +42,7 @@ body {
 
 nav {
 	margin: 10px auto;
+	font-family: 'Oswald', sans-serif;
 }
 nav ul {
 	padding: 0;

@@ -15,6 +15,7 @@
 	<head>
    		<title>write a post</title>
    		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+   		<script src="/stylesheets/functions.js"></script>
 	</head>
 
   	<body>
@@ -44,15 +45,15 @@
 		Collections.sort(greetings);
 		if (user != null) {
 	%>
-	<h1>publish a post</h1>
+	<h1 id="header">publish a post</h1>
 	<h3>title</h3>
-	<form action="/ofysign" method="post">
-		<textarea name="title" rows="1" cols="110"
+	<form action="/ofysign" method="post" onsubmit="return validate();">
+		<textarea id="title" name="title" rows="1" cols="110"
 			placeholder="Enter your title here!"></textarea>
 		<h3 class="publish-header">content</h3>
-		<textarea name="content" rows="5" cols="110"
+		<textarea id="content" name="content" rows="5" cols="110"
 			placeholder="Write your post here!"></textarea>
-		<button type="submit">publish</button>
+		<button id="submit" type="submit">publish</button>
 		<input type="hidden"
 			value="/" />
 	</form>

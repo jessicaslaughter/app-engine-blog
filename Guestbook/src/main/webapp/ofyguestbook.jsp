@@ -22,6 +22,7 @@
   <head>
   	<title>our blog</title>
   	<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"/>
   </head>
   <body>
   <h1>Our Blog</h1>
