@@ -1,5 +1,3 @@
-// https://vivid-access-156516.appspot.com/ofyguestbook.jsp
-
 package guestbook;
 
  
@@ -49,7 +47,7 @@ public class OfySignGuestbookServlet extends HttpServlet {
 
     	ofy().save().entity(greeting).now();
 
-    	resp.sendRedirect("/ofyguestbook.jsp");
+    	resp.sendRedirect("/ofyguestbook.jsp");	
 
     }
 

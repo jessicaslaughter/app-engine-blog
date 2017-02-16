@@ -4,10 +4,11 @@
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
-<%@ page import="com.google.appengine.api.datastore.DatastoreServiceFactory" %>
-<%@ page import="com.google.appengine.api.datastore.DatastoreService" %>
-<%@ page import="com.google.appengine.api.datastore.Query" %>
-<%@ page import="com.google.appengine.api.datastore.Entity" %>
+<%@ page import="java.util.*" %>
+
+<%@ page import="com.googlecode.objectify.*" %>
+
+<%@ page import="guestbook.Greeting" %>
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
@@ -58,10 +59,11 @@
 %>
  
  <%
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    Key guestbookKey = KeyFactory.createKey("Guestbook", guestbookName);
-    Query query = new Query("Greeting", guestbookKey).addSort("date", Query.SortDirection.DESCENDING);
-    List<Entity> greetings = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(5));
+ ObjectifyService.register(Greeting.class);
+
+	List<Greeting> greetings = ObjectifyService.ofy().load().type(Greeting.class).list();
+
+	Collections.sort(greetings);
     if (greetings.isEmpty()) {
         %>
         <div>
