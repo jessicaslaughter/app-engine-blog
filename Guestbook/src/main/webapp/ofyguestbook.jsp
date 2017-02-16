@@ -53,8 +53,8 @@
 	  	<li><a href="/post.jsp">write a post</a></li>
 	  	<li><a href="/listposts.jsp">view all posts</a></li>
 	  	<li><a href="<%=userService.createLogoutURL(request.getRequestURI())%>">sign out</a></li>
-	  	<li>subscribe</li>
-	  	<li>unsubscribe</li>
+	  	<li><a href="/subscribed.jsp">subscribe</a></li>
+	  	<li><a href="/unsubscribe.jsp">unsubscribe</a></li>
 	</ul></nav>
 
 	<%

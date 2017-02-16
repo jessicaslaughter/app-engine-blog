@@ -50,14 +50,14 @@ public class CronServlet extends HttpServlet {
 			Session session = Session.getDefaultInstance(props, null);
 			
 			Message msg = new MimeMessage(session);
-			msg.setFrom(new InternetAddress("blog@vivid-access-156516.appspot.com"));
+			msg.setFrom(new InternetAddress("blog@jess-leo-blog.appspot.com"));
 			
 			List<EmailAddress> addresses = ofy().load().type(EmailAddress.class).list();
 			for (EmailAddress send: addresses){
 				msg.addRecipient(Message.RecipientType.TO,
 						new InternetAddress(send.getEmail()));
 			}
-			msg.setSubject("My New Blog's Daily Newsletter");
+			msg.setSubject("Jessica and Leo's Daily Newsletter");
 			
 			UserService userService = UserServiceFactory.getUserService();
 	        User user = userService.getCurrentUser();
@@ -71,7 +71,7 @@ public class CronServlet extends HttpServlet {
 		 	List<Greeting> greetings = ObjectifyService.ofy().load().type(Greeting.class).list();
 
 		 	Collections.sort(greetings);
-			String message = "Good day, here are the most recent posts from My New Blog:" 
+			String message = "Good day, here are the most recent posts from Jessica and Leo's Blog:" 
 		    + "\r\n" + "\r\n" + "=================================" + "\r\n";
 		    for (Greeting greeting: greetings){
 		    		message += "Title: " + greeting.getTitle() + "\r\n"
