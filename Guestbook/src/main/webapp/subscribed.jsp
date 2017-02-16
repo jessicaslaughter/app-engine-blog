@@ -34,7 +34,7 @@
     <div> <!-- Brand and toggle get grouped for better mobile display -->
       <p>Hello, ${fn:escapeXml(user.nickname)}! (You can
 		<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
-		 <form action="/subscribe" method="get">
+		 <form action="/unsubscribe.jsp" method="get">
           <div><button><h4>Unsubscribe</h4></button></div>
     </form>
     </div>  
@@ -90,7 +90,7 @@
  <% } %>
 
 
- 	<form action="/guestbook.jsp" method="post">
+ 	<form action="/ofyguestbook.jsp" method="post">
           <div><button class="btn btn-warning" style="border-radius: 20px;"><h4 style="padding: 0;">Back to Home</h4></button></div>
     
     </form>

@@ -37,9 +37,9 @@
      
       <p>Hello, ${fn:escapeXml(user.nickname)}! (You can
 		<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
-		 <form action="/subscribe" method="post">
+		 <form action="/subscribed.jsp" method="post">
           <div><button><h4>Subscribe</h4></button></div>
-    </form>
+    </form> 
    </div>   
   </div>
 </nav>
@@ -102,7 +102,7 @@
  <% } %>
 
 
- 	<form action="/guestbook.jsp" method="post">
+ 	<form action="/ofyguestbook.jsp" method="post">
           <div><button><h4>Return to Homepage</h4></button></div>
     
     </form>
