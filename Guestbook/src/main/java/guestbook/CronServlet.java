@@ -3,7 +3,6 @@ package guestbook;
 
 import java.io.IOException;
 import java.util.logging.Logger;
-
 import javax.mail.Address;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -19,12 +18,13 @@ import java.nio.file.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 
-
+import guestbook.Sendgrid;
 import com.googlecode.objectify.ObjectifyService;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+import com.google.appengine.labs.repackaged.org.json.JSONException;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,60 +34,40 @@ import javax.servlet.http.HttpServletResponse;
 
 
 public class CronServlet extends HttpServlet {
-
-	private static final Logger logger = Logger.getLogger(CronServlet.class.getName());
+	static{
+		ObjectifyService.register(EmailAddress.class);
+	}
+	private static final Logger _logger = Logger.getLogger(CronServlet.class.getName());
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-
-		String strCallResult = "";
-		resp.setContentType("text/plain");
-		try {
-			String strTo = req.getParameter("email_to");
-			String strSubject = req.getParameter("email_subject");
-			String strBody = req.getParameter("email_body");
-
-			Properties props = new Properties();
-			Session session = Session.getDefaultInstance(props, null);
-			
-			Message msg = new MimeMessage(session);
-			msg.setFrom(new InternetAddress("blog@jess-leo-blog.appspot.com"));
-			
+			ObjectifyService.register(Greeting.class);
+		 	List<Greeting> posts = ObjectifyService.ofy().load().type(Greeting.class).list();
+		 	Collections.sort(posts);
+		 	
+			String message = "Hi!" 
+		    + "\r\n" + "\r\n" + "=================================" + "\r\n";
+		    for (Greeting thisPost: posts){
+		    		message += "Title: " + thisPost.getTitle() + "\r\n"
+						+ "\r\n" + thisPost.getContent() + "\r\n"
+						+ "=================================" + "\r\n";
+		    }
+		    
 			List<EmailAddress> addresses = ofy().load().type(EmailAddress.class).list();
 			for (EmailAddress send: addresses){
-				msg.addRecipient(Message.RecipientType.TO,
-						new InternetAddress(send.getEmail()));
+				Sendgrid mail = new Sendgrid("jessicaslaughter","jessicas1!");
+				mail.setTo("jessica.t.slaughter@gmail.com")
+			    .setFrom("hello@jessicaslaughter.co")
+			    .setSubject("Our Blog")
+			    .setText(message)
+			    .setHtml("<strong>Thanks!</strong>");
+				try {
+					mail.send();
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-			msg.setSubject("Jessica and Leo's Daily Newsletter");
-			
-			UserService userService = UserServiceFactory.getUserService();
-	        User user = userService.getCurrentUser();
-			
-			String guestbookName = req.getParameter("guestbookName");
-		    if (guestbookName == null) {
-		        guestbookName = "Web Blog";
-		    }
-		    ObjectifyService.register(Greeting.class);
 
-		 	List<Greeting> greetings = ObjectifyService.ofy().load().type(Greeting.class).list();
-
-		 	Collections.sort(greetings);
-			String message = "Good day, here are the most recent posts from Jessica and Leo's Blog:" 
-		    + "\r\n" + "\r\n" + "=================================" + "\r\n";
-		    for (Greeting greeting: greetings){
-		    		message += "Title: " + greeting.getTitle() + "\r\n"
-						+ "\r\n" + greeting.getContent() + "\r\n"
-						+ "=================================" + "\r\n";
-		    	}
-		    
-			msg.setText(message);
-			Transport.send(msg);
-			strCallResult = "Success: " + "Email has been delivered.";
-			resp.getWriter().println(strCallResult);
-		}
-		catch (Exception ex) {
-			strCallResult = "Fail: " + ex.getMessage();
-			resp.getWriter().println(strCallResult);
-		}
 
 	}
 

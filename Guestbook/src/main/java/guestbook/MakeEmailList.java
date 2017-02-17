@@ -4,13 +4,10 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import javax.jdo.PersistenceManager;
+import javax.jdo.PersistenceManagerFactory;
 import javax.servlet.http.*;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -31,9 +28,6 @@ public class MakeEmailList extends HttpServlet {
     	UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
         
-        //Key userKey = KeyFactory.createKey("user", user.getEmail());
-        //Entity subscriber = new Entity("Subscriber", userKey);
-        //subscriber.setProperty("user", user.getEmail());
         
         EmailAddress subscribe = new EmailAddress(user.getEmail(), user.getNickname());
         ofy().save().entity(subscribe).now();
@@ -41,7 +35,7 @@ public class MakeEmailList extends HttpServlet {
         //DatastoreService subList = DatastoreServiceFactory.getDatastoreService();
         //subList.put(subscriber);
         
-        resp.sendRedirect("/subscribed.jsp");
+        resp.sendRedirect("subscribed.jsp");
         
     }
     
@@ -57,6 +51,6 @@ public class MakeEmailList extends HttpServlet {
         EmailAddress unsubscribe = new EmailAddress(user.getEmail(), user.getNickname());
         ofy().delete().entity(unsubscribe).now();
       
-    	resp.sendRedirect("/unsubscribe.jsp");
+    	resp.sendRedirect("unsubscribe.jsp");
     }
 }

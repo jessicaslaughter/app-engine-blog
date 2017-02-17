@@ -9,6 +9,7 @@
 <%@ page import="com.googlecode.objectify.*" %>
 
 <%@ page import="guestbook.Greeting" %>
+<%@ page import="guestbook.EmailAddress" %>
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>

@@ -6,6 +6,9 @@
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 <%@ page import="java.util.*" %>
 <%@ page import="guestbook.Greeting" %>
+<%@ page import="guestbook.EmailAddress" %>
+
+
 <%@ page import="com.googlecode.objectify.*" %>
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>

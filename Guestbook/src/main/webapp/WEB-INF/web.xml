@@ -35,15 +35,30 @@
         <url-pattern>/ofysign</url-pattern>
 
     </servlet-mapping>
-    
     <servlet>
+    
 		<servlet-name>CronServlet</servlet-name>
+		
 		<servlet-class>guestbook.CronServlet</servlet-class>
+		
 	</servlet>
+	
 	<servlet-mapping>
+	
 		<servlet-name>CronServlet</servlet-name>
+		
 		<url-pattern>/cronjob</url-pattern>
+		
 	</servlet-mapping>
+	
+	<servlet>
+    	<servlet-name>subscribe</servlet-name>    
+    	<servlet-class>guestbook.MakeEmailList</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>subscribe</servlet-name>
+        <url-pattern>/subscribe</url-pattern>
+    </servlet-mapping>
     
     <filter>
 

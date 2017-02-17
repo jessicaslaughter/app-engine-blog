@@ -26,7 +26,6 @@ public class OfySignGuestbookServlet extends HttpServlet {
 	
 
 	static {
-
         ObjectifyService.register(Greeting.class);
 
     }

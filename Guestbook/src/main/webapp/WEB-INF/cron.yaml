@@ -1,5 +1,0 @@
-cron:
-- description: daily summary job
-  url: /cronjob
-  schedule: every day 17:00
-  timezone: America/Chicago
