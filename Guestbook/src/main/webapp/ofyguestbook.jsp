@@ -20,13 +20,13 @@
 
 <html>
   <head>
-  	<title>our blog</title>
+  	<title>Jessica and Leo's Blog</title>
   	<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
   	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"/>
   </head>
   <body>
-  <h1>Our Blog</h1>
-  <div class="header-image"><img src=/ourblog.jpg/></div>
+  <h1>Jessica and Leo's Blog</h1>
+  <div class="header-image"><img src=/header.jpg/></div>
 
 <%
 
