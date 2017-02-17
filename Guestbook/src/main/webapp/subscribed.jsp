@@ -91,7 +91,7 @@
 
 
  	<form action="/ofyguestbook.jsp" method="post">
-          <div><button class="btn btn-warning" style="border-radius: 20px;"><h4 style="padding: 0;">Back to Home</h4></button></div>
+          <div><button"><h4>Back to Home</h4></button></div>
     
     </form>
 

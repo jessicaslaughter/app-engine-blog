@@ -26,7 +26,7 @@
   </head>
   <body>
   <h1>Our Blog</h1>
-  <div class="header-image"><img src="http://jessicaslaughter.co/wp-content/uploads/2017/02/header-image.jpg"/></div>
+  <div class="header-image"><img src=/ourblog.jpg/></div>
 
 <%
 
@@ -53,8 +53,9 @@
 	  	<li><a href="/post.jsp">write a post</a></li>
 	  	<li><a href="/listposts.jsp">view all posts</a></li>
 	  	<li><a href="<%=userService.createLogoutURL(request.getRequestURI())%>">sign out</a></li>
-	  	<li><a href="/subscribed.jsp">subscribe</a></li>
+	  	<li><a action="CronServlet" href="/subscribed.jsp">subscribe</a></li>
 	  	<li><a href="/unsubscribe.jsp">unsubscribe</a></li>
+	  	
 	</ul></nav>
 
 	<%
@@ -63,8 +64,8 @@
 	<nav><ul>
 	  	<li><a href="/post.jsp">write a post</a></li>
 	  	<li><a href="/listposts.jsp">view all posts</a></li>
-	  	<li>subscribe</li>
-	  	<li>unsubscribe</li>
+	  	<li><a href="/subscribed.jsp">subscribe</a></li>
+	  	<li><a href="/unsubscribe.jsp">unsubscribe</a></li>
 	</ul></nav>
 	<%
 		}
